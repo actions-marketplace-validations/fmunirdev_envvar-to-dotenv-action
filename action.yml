@@ -1,0 +1,26 @@
+name: 'env vars to dotenv'
+author: 'Fahad Munir ( @fmunirdev )'
+description: 'Composite action to append environment variables to a dotenv file.'
+inputs:
+  variableName:
+    description: 'Single env var name'
+    required: false
+  variableNames:
+    description: 'Comma separated names of env vars'
+    required: false
+runs:
+  using: 'composite'
+  steps:
+    - run: |
+        if [ ! -z "${{ inputs.variableName }}" ] ; then
+          VAR_NAME=${{ inputs.variableName }}
+          echo $VAR_NAME=`eval echo ${!VAR_NAME}` >> .env
+        fi
+        if [ ! -z "${{ inputs.variableNames }}" ] ; then
+          IFS=','
+          for i in `echo "${{ inputs.variableNames }}"`
+          do
+            echo $i=`eval echo ${!i}` >> .env
+          done
+        fi
+      shell: bash
