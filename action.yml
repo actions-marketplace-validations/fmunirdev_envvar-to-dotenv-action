@@ -1,6 +1,9 @@
 name: 'env vars to dotenv'
 author: 'Fahad Munir ( @fmunirdev )'
 description: 'Composite action to append environment variables to a dotenv file.'
+branding:
+  icon: 'file-plus'
+  color: 'gray-dark'
 inputs:
   variableName:
     description: 'Single env var name'
