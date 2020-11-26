@@ -17,13 +17,13 @@ runs:
     - run: |
         if [ ! -z "${{ inputs.variableName }}" ] ; then
           VAR_NAME=${{ inputs.variableName }}
-          echo $VAR_NAME=`eval echo ${!VAR_NAME}` >> .env
+          echo $VAR_NAME=`eval echo '${!VAR_NAME}'` >> .env
         fi
         if [ ! -z "${{ inputs.variableNames }}" ] ; then
           IFS=','
           for i in `echo "${{ inputs.variableNames }}"`
           do
-            echo $i=`eval echo ${!i}` >> .env
+            echo $i=`eval echo '${!i}'` >> .env
           done
         fi
       shell: bash
