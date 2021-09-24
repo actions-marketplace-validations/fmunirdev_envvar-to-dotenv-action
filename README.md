@@ -56,3 +56,23 @@ jobs:
         with:
           variableName: SECRET_VAR1,ENV_VAR
 ```
+
+### With target
+
+The created env file can be configured via target. 
+If the target contains a folder path folders will be created automatically
+
+```yaml
+jobs:
+  multiple:
+    name: Target
+    runs-on: ubuntu-latest
+    steps:
+      - name: Creating .env file
+        uses: fmunirdev/envvar-to-dotenv-action@v0.1.0
+        env:
+          ENV_VAR: 'value'
+        with:
+          variableName: ENV_VAR
+          target: .prod.env   
+```
