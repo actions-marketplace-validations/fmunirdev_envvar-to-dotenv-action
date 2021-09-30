@@ -11,19 +11,26 @@ inputs:
   variableNames:
     description: 'Comma separated names of env vars'
     required: false
+  target:
+    description:  'The env file that will be created'
+    required: false
+    default: '.env'
 runs:
   using: 'composite'
   steps:
     - run: |
+        if [ ! -d "`dirname ${{ inputs.target }}`" ] ; then
+          mkdir -p `dirname ${{ inputs.target }}`
+        fi
         if [ ! -z "${{ inputs.variableName }}" ] ; then
           VAR_NAME=${{ inputs.variableName }}
-          echo $VAR_NAME=`eval echo '${!VAR_NAME}'` >> .env
+          echo $VAR_NAME=`eval echo '${!VAR_NAME}'` >> ${{ inputs.target }}
         fi
         if [ ! -z "${{ inputs.variableNames }}" ] ; then
           IFS=','
           for i in `echo "${{ inputs.variableNames }}"`
           do
-            echo $i=`eval echo '${!i}'` >> .env
+            echo $i=`eval echo '${!i}'` >> ${{ inputs.target }}
           done
         fi
       shell: bash
