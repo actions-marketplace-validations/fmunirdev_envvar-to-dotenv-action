@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Creating .env file
-        uses: fmunirdev/envvar-to-dotenv-action@v0.1.0
+        uses: fmunirdev/envvar-to-dotenv-action@v0.2.0
         env:
           ENV_VAR1: 'value'
         with:
@@ -31,7 +31,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Creating .env file
-        uses: fmunirdev/envvar-to-dotenv-action@v0.1.0
+        uses: fmunirdev/envvar-to-dotenv-action@v0.2.0
         env:
           ENV_VAR1: 'value 1'
           ENV_VAR2: 'value 2'
@@ -49,7 +49,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Creating .env file
-        uses: fmunirdev/envvar-to-dotenv-action@v0.1.0
+        uses: fmunirdev/envvar-to-dotenv-action@v0.2.0
         env:
           SECRET_VAR1: ${{ secrets.SECRET_VAR1 }}
           ENV_VAR: 'value'
@@ -69,7 +69,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Creating .env file
-        uses: fmunirdev/envvar-to-dotenv-action@v0.1.0
+        uses: fmunirdev/envvar-to-dotenv-action@v0.2.0
         env:
           ENV_VAR: 'value'
         with:
